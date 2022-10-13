@@ -1,3 +1,6 @@
+const { default: inquirer } = require("inquirer");
+
+
 function produceManager() {
     console.log('Please build a team');
     inquirer
@@ -35,4 +38,43 @@ function produceManager() {
         produceTeam ();
                
       });
+  }
+
+  function produceTeam () {
+    inquirer
+    .prompt ([
+    {
+            type: 'list',
+            name: 'memberChoice',
+            message: 'What kind of team member are you hoping to bring on board?',
+            choices: [
+              'Engineer',
+              'Intern',
+              "There's no need for us to expand our team at this time.",
+            ],
+    },
+   ])
+   .then ((userOption) => {
+    switch (userOption.memberChoice) {
+        case 'Engineer':
+            includeEngineer();
+            break;
+        case 'Intern':
+            includeIntern();
+            break;
+        default:
+            buildTeam();      //come back 
+    }
+   });
+
+  }
+
+  function includeEngineer () {
+    inquirer
+    .prompt ([
+    {
+        type: 'input',
+        name: 'engineerName',
+        message: "What is your engineer's name?"
+    }])
   }
