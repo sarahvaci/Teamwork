@@ -1,6 +1,6 @@
 .team-heading {
   background-color: lightcoral;
-  color: white;
+  color: seashell;
 }
 
 .team-area {
@@ -15,7 +15,7 @@
   width: 90%;
   min-height: 22rem;
   background-color: lightblue;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
