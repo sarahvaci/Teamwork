@@ -71,10 +71,74 @@ function produceManager() {
 
   function includeEngineer () {
     inquirer
-    .prompt ([
-    {
-        type: 'input',
-        name: 'engineerName',
-        message: "What is your engineer's name?"
-    }])
-  }
+        .prompt ([
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: "What is your engineer's name?"
+        },
+        {
+            type: 'input',
+            name: 'engineerId',
+            message: "What is your engineer's id?" 
+        },
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: "What is your engineer's email?"
+        },
+        {
+            type: 'input',
+            name: 'engineerGithub',
+            message: "What is your engineer's GitHub username?"
+        },  
+    ])
+    .then ((answers) => {
+    const engineer = new Engineer(
+        answers.engineerName,
+        answers.engineerId,
+        answers.engineerEmail,
+        answers.engineerGithub
+      );
+      employeeMembers.push(engineer);
+      idArray.push (answers.managerId);
+      produceTeam ();
+    });
+}
+
+function includeIntern() {
+    inquirer
+        .prompt ([
+        {
+            type: 'input',
+            name: 'internName',
+            message: "What is your intern's name?"
+        },
+        {
+            type: 'input',
+            name: 'internId',
+            message: "What is your intern's id?" 
+        },
+        {
+            type: 'input',
+            name: 'internEmail',
+            message: "What is your intern's email?"
+        },
+        {
+            type: 'input',
+            name: 'internSchool',
+            message: "What is your intern's school?"
+        },  
+    ])
+    .then ((answers) => {
+        const intern = new Intern(
+            answers.internName,
+            answers.internId,
+            answers.internEmail,
+            answers.internSchool
+          );
+      employeeMembers.push(intern);
+      idArray.push (answers.internId);
+      produceTeam ();
+    });
+}
